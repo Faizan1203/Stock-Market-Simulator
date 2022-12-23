@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">TIMESTAMP</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for row in stocks_bought %}
+    {% if row.stock_qty != 0 %}
+    <tr>
+        <td>{{row.stock_symbol}}</td>
+        <td>{{row.stock_name}}</td>
+        <td>{{row.stock_qty}}</td>
+        <td>{{row.stock_price | usd}}</td>
+        <td>{{row.time_stamp_bought}}</td>
+
+    </tr>
+    {% endif %}
+{% endfor %}
+
+
+    <tbody>
+{% for row in stocks_sold %}
+    {% if row.stock_qty != 0 %}
+    <tr>
+        <td>{{row.stock_symbol}}</td>
+        <td>{{row.stock_name}}</td>
+        <td>-{{row.stock_qty}}</td>
+        <td>{{row.stock_price | usd}}</td>
+        <td>{{row.time_stamp_sold}}</td>
+
+    </tr>
+    {% endif %}
+{% endfor %}
+
+</table>
+{% endblock %}

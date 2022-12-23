@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block main %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">TOTAL</th>
+    </tr>
+    </thead>
+    <tbody>
+{% for stock in stocks %}
+    {% if stock.stock_qty != 0 %}
+    <tr>
+        <td>{{stock.stock_symbol}}</td>
+        <td>{{stock.stock_name}}</td>
+        <td>{{stock.stock_qty}}</td>
+        <td>{{stock.stock_price | usd}}</td>
+        <td>{{stock.stock_total | usd}}</td>
+
+    </tr>
+    {% endif %}
+{% endfor %}
+
+    <tr>
+        <td>Cash</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{cash | usd}}</td>
+    </tr>
+    <tr>
+        <td>CURRENT TOTAL</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{grandtotal | usd}}</td>
+    </tr>
+    </tbody>
+</table>
+{% endblock %}

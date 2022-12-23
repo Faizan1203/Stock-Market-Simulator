@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+    <strong>A share of {{sym.name}} ({{sym.symbol}}) costs  {{sym.price | usd}}.</strong>
+
+{% endblock %}
